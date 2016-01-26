@@ -163,3 +163,5 @@ before_script:
   - if [[ ! -z "$TRAVIS_TAG" && ! -z "$LATEST" ]]; then docker tag deeky666/mysql:${MYSQL_VERSION} deeky666/mysql:latest; fi
   - if [ ! -z "$TRAVIS_TAG"]; then docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"; fi
   - if [ ! -z "$TRAVIS_TAG"]; then docker push deeky666/mysql; fi
+
+script: true
