@@ -165,3 +165,10 @@ before_script:
   - if [ ! -z "$TRAVIS_TAG"]; then docker push deeky666/mysql; fi
 
 script: true
+
+matrix:
+  fast_finish: true
+  allow_failures:
+    - env: MYSQL_VERSION=5.0.33 # source code only distribution
+    - env: MYSQL_VERSION=5.0.75 # source code only distribution
+    - env: MYSQL_VERSION=5.0.92 # source code only distribution
