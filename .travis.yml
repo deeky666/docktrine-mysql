@@ -151,7 +151,7 @@ env:
 
 before_install:
   - sudo apt-get update -y --allow-unauthenticated
-  - sudo apt-get install -y docker-engine
+  - sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confnew" docker-engine
 
 before_script:
   - docker build --force-rm=true --build-arg MYSQL_VERSION=${MYSQL_VERSION} -t deeky666/mysql:${MYSQL_VERSION} .
