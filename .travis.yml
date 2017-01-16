@@ -160,7 +160,8 @@ env:
   - MYSQL_VERSION=5.7.9
   - MYSQL_VERSION=5.7.10
   - MYSQL_VERSION=5.7.11
-  - MYSQL_VERSION=5.7.12 LATEST_MINOR=5.7 LATEST=true
+  - MYSQL_VERSION=5.7.12
+  - MYSQL_VERSION=5.7.13 LATEST_MINOR=5.7 LATEST=true
 
 before_install:
   - sudo apt-get update -y --allow-unauthenticated
