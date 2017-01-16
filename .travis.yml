@@ -174,10 +174,10 @@ before_install:
 before_script:
   - docker build --force-rm=true --build-arg MYSQL_VERSION=${MYSQL_VERSION} -t deeky666/mysql:${MYSQL_VERSION} .
 
-  - docker run -d -p 3306:3306 deeky666/mysql:${MYSQL_VERSION}
+  - docker run -d -p 3307:3306 deeky666/mysql:${MYSQL_VERSION}
   - sleep 5
-  - echo "status" | mysql -h127.0.0.1 -uroot
-  - mysql -h127.0.0.1 -uroot -e "CREATE DATABASE foo; SHOW DATABASES;" | grep foo > /dev/null
+  - echo "status" | mysql -h127.0.0.1 -P 3307 -uroot
+  - mysql -h127.0.0.1 -P 3307 -uroot -e "CREATE DATABASE foo; SHOW DATABASES;" | grep foo > /dev/null
 
   - if [[ ! -z "$TRAVIS_TAG" && ! -z "$LATEST_MINOR" ]]; then docker tag deeky666/mysql:${MYSQL_VERSION} deeky666/mysql:${LATEST_MINOR}; fi
   - if [[ ! -z "$TRAVIS_TAG" && ! -z "$LATEST" ]]; then docker tag deeky666/mysql:${MYSQL_VERSION} deeky666/mysql:latest; fi
