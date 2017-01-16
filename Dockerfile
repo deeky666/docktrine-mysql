@@ -23,10 +23,29 @@ RUN \
 
     cd /tmp && \
 
-    wget -nv http://dev.mysql.com/get/mysql-$MYSQL_VERSION-linux-glibc2.5-x86_64.tar.gz -O mysql.tar.gz || \
-    wget -nv http://dev.mysql.com/get/mysql-$MYSQL_VERSION-linux2.6-x86_64.tar.gz -O mysql.tar.gz || \
-    wget -nv http://dev.mysql.com/get/mysql-$MYSQL_VERSION-linux-x86_64-glibc23.tar.gz -O mysql.tar.gz || \
-    wget -nv http://dev.mysql.com/get/mysql-standard-$MYSQL_VERSION-linux-x86_64-glibc23.tar.gz -O mysql.tar.gz && \
+    wget \
+        -nv \
+        --no-check-certificate \
+        -O mysql.tar.gz \
+        http://dev.mysql.com/get/mysql-$MYSQL_VERSION-linux-glibc2.5-x86_64.tar.gz || \
+
+    wget \
+        -nv \
+        --no-check-certificate \
+        -O mysql.tar.gz \
+        http://dev.mysql.com/get/mysql-$MYSQL_VERSION-linux2.6-x86_64.tar.gz || \
+
+    wget \
+        -nv \
+        --no-check-certificate \
+        -O mysql.tar.gz \
+        http://dev.mysql.com/get/mysql-$MYSQL_VERSION-linux-x86_64-glibc23.tar.gz || \
+
+    wget \
+        -nv \
+        --no-check-certificate \
+        -O mysql.tar.gz \
+        http://dev.mysql.com/get/mysql-standard-$MYSQL_VERSION-linux-x86_64-glibc23.tar.gz && \
 
     tar xf mysql.tar.gz --strip 1 && \
 
