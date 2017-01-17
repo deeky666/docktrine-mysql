@@ -16,6 +16,7 @@ RUN \
     useradd -r -g mysql mysql && \
 
     mkdir -p /mysql/conf.d /mysql/srv /mysql/log /usr/local/mysql && \
+    touch /mysql/log/error.log && \
     chown -R mysql:mysql /mysql/srv /mysql/log && \
     chmod 755 /mysql/conf.d && \
     chmod -R 700 /mysql/srv && \
@@ -78,7 +79,7 @@ ADD ./my.cnf /etc/my.cnf
 VOLUME ["/mysql/conf.d", "/mysql/log", "/mysql/srv"]
 
 # Define MySQL server binary as entrypoint.
-ENTRYPOINT ["/usr/sbin/mysqld_safe", "--defaults-extra-file=/mysql/conf.d/my.cnf"]
+ENTRYPOINT ["/usr/sbin/mysqld_safe", "--defaults-extra-file=/mysql/conf.d/my.cnf", "--ledir=/usr/bin"]
 
 # Expose MySQL server port 3306.
 EXPOSE 3306
