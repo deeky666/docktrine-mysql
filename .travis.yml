@@ -174,8 +174,9 @@ before_install:
 before_script:
   - docker build --force-rm=true --build-arg MYSQL_VERSION=${MYSQL_VERSION} -t deeky666/mysql:${MYSQL_VERSION} .
 
-  - docker run -d -p 3307:3306 deeky666/mysql:${MYSQL_VERSION}
+  - docker run -d -p 3307:3306 --name mysql deeky666/mysql:${MYSQL_VERSION}
   - sleep 5
+  - status="$(docker inspect -f '{{ .State.Health.Status}}' mysql)" && [ "$status" = 'healthy' ]
   - echo "status" | mysql -h127.0.0.1 -P 3307 -uroot
   - mysql -h127.0.0.1 -P 3307 -uroot -e "CREATE DATABASE foo; SHOW DATABASES;" | grep foo > /dev/null
 

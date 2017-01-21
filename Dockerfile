@@ -83,3 +83,7 @@ ENTRYPOINT ["/usr/sbin/mysqld_safe", "--defaults-extra-file=/mysql/conf.d/my.cnf
 
 # Expose MySQL server port 3306.
 EXPOSE 3306
+
+COPY healthcheck /usr/local/bin/
+
+HEALTHCHECK --interval=1s --retries=30 CMD ["healthcheck"]
