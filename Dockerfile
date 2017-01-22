@@ -51,6 +51,7 @@ RUN \
     tar xf mysql.tar.gz --strip 1 && \
 
     cp -p bin/my_print_defaults /usr/sbin/ && \
+    cp -p bin/mysql /usr/bin/ && \
     cp -p bin/mysqld /usr/bin/ && \
     cp -p bin/mysqld_safe /usr/sbin/ && \
     cp -rp share /usr/local/mysql/ && \
